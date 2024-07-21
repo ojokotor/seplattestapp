@@ -25,25 +25,25 @@ const auth = (req, res, next) => {
   };
 
 // Endpoint to handle POST requests
-app.post('/items', auth, async (req, res) => {
+app.post('/items', (req, res) => {
   const item = req.body;
   console.log('Received item:', item);
 
   // Forward the received data to another application
-  try {
-    const response = await axios.post('https://xceed365serviceapi-staging.azurewebsites.net/api/', item, {
-      'Authorization': 'Bearer your-token',
-      'Content-Type': 'application/json',
-      'xceed-service-key':"+N240ZKB9faINL0xNs4Bzbx+fTcgQdFtoY3NB2b2gok="
-    });
+  // try {
+  //   const response = await axios.post('https://xceed365serviceapi-staging.azurewebsites.net/api/', item, {
+  //     'Authorization': 'Bearer your-token',
+  //     'Content-Type': 'application/json',
+  //     'xceed-service-key':"+N240ZKB9faINL0xNs4Bzbx+fTcgQdFtoY3NB2b2gok="
+  //   });
     
-    console.log('Data forwarded successfully:', response.data);
-    res.status(200).send('Item received and forwarded');
-  } catch (error) {
-    console.error('Error forwarding data:', error);
-    res.status(500).send('Failed to forward item');
-  }
-  // res.status(200).send('Item received');
+  //   console.log('Data forwarded successfully:', response.data);
+  //   res.status(200).send('Item received and forwarded');
+  // } catch (error) {
+  //   console.error('Error forwarding data:', error);
+  //   res.status(500).send('Failed to forward item');
+  // }
+  res.status(200).send('Item received');
 });
 
 // Start the server
