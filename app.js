@@ -24,10 +24,18 @@ const auth = (req, res, next) => {
     next();
   };
 
-app.get('/', (req,res) => {
-    res.status(200).send('Hello World - Welcome to my app')
-}
-        
+// app.get('/', (req,res) => {
+//     res.status(200).send('Hello World - Welcome to my app')
+// }
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 // Endpoint to handle POST requests
 app.post('/items', (req, res) => {
   const item = req.body;
