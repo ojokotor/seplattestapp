@@ -24,6 +24,10 @@ const auth = (req, res, next) => {
     next();
   };
 
+app.get('/', (req,res) => {
+    res.status(200).send('Hello World - Welcome to my app')
+}
+        
 // Endpoint to handle POST requests
 app.post('/items', (req, res) => {
   const item = req.body;
